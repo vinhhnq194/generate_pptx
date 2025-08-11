@@ -1,0 +1,27 @@
+{
+  "title": "h2.fw-bold",
+  "subtitle": "p.lead",
+  "main_row": ".row.g-3.flex-grow-1",
+  "left_col": ".col-6.d-flex.flex-column.gap-3:nth-of-type(1)",
+  "right_col": ".col-6.d-flex.flex-column.gap-3:nth-of-type(2)",
+
+  "left_narrative_card_body": ".card.flex-grow-1 .card-body",
+  "left_kpi_boxes": ".row.g-2 .stat-box",
+
+  "right_steps_card": ".card.border-start",
+  "right_steps_header": ".card.border-start .card-header",
+  "right_steps_list": ".card.border-start ol li",
+
+  "right_icon_row": ".row.g-2",
+  "right_icon_cards": ".row.g-2 .card",
+  "right_icon_caption": "p.small",
+
+  "right_outlook_card_body": ".card.flex-grow-1 .card-body p",
+
+  "footer_bar": ".footer-bar",
+  "footer_left": ".footer-bar div:nth-of-type(1)",
+  "footer_right": ".footer-bar div:nth-of-type(2)",
+
+  "decor_diagonal": ".shape-diagonal",
+  "decor_circle": ".shape-circle"
+}

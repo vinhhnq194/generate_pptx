@@ -1,0 +1,12 @@
+# store mapping metadata
+for m in MAPPING_REGISTRY:
+    db.upsert_mapping({
+        "name": m.name,
+        "variable": m.variable,
+        "category": m.category,
+        "property": m.prop,
+        "pptx_attr": m.pptx_attr,
+        "bootstrap_class": m.bootstrap_class,
+        "value_type_notes": m.value_type_notes,
+    })
+Each entry in MAPPING_REGISTRY has name and variable. You can serialize these alongside user choices.

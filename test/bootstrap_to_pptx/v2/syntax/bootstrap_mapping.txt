@@ -1,0 +1,26 @@
+from utils.bootstrap_mapping import (
+    GridContext, apply_shape_from_bootstrap, apply_paragraph_from_bootstrap,
+    apply_run_from_bootstrap, MAPPING_REGISTRY
+)
+
+# Grid based on your slide
+grid = GridContext(
+    slide_width_in=13.333, slide_height_in=7.5,
+    margin_left_in=0.7, margin_right_in=0.7, gutter_in=0.22
+)
+
+# Shape example
+shape = slide.shapes.add_shape(...)
+
+apply_shape_from_bootstrap(
+    shape,
+    class_list=["offset-1","col-6","mt-3","bg-primary","border-2","rounded"],
+    band_height_in=4.85
+)
+
+# Text example
+tf = shape.text_frame
+p = tf.paragraphs[0]
+apply_paragraph_from_bootstrap(p, text_align_class="start", space_after_pt=6, line_spacing=1.15)
+r = p.runs[0] if p.runs else p.add_run()
+apply_run_from_bootstrap(r, class_list=["fw-bold","text-primary"], size_pt=16, font_name="Calibri")

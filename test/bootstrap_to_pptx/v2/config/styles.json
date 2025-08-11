@@ -1,0 +1,20 @@
+{
+  "page": { "width_in": 13.333, "height_in": 7.5, "margins_in": [0.7, 0.7, 0.7, 0.7], "gutter_in": 0.22 },
+  "radii": { "card": 0.22 },
+  "shadow": { "enabled": true },
+
+  "title":   { "size_pt": 38, "color": "#0d2d52", "top_in": 0.55 },
+  "subtitle":{ "size_pt": 18, "color": "#6c757d", "top_in": 1.18 },
+
+  "narrative": { "para_gap_in": 0.20, "body_size_pt": 16, "bullets_size_pt": 16, "padding_in": [0.32, 0.32, 0.32, 0.32] },
+
+  "kpi": { "height_in": 1.35, "gap_in": 0.2, "headline_pt": 28, "caption_pt": 12, "wrap_limit": 36 },
+
+  "steps": { "height_ratio": 0.44, "header_pt": 14, "items_pt": 16, "gap_below_in": 0.22 },
+
+  "icons": { "height_in": 1.55, "gap_in": 0.2, "caption_pt": 12, "gap_below_in": 0.22, "img_h_in": 0.6 },
+
+  "outlook": { "min_height_in": 1.2, "body_pt": 16, "padding_in": [0.32, 0.32, 0.32, 0.32] },
+
+  "footer": { "height_in": 0.45, "left_pt": 10, "right_pt": 10, "prefix": "Slide " }
+}
