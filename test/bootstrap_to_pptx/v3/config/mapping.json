@@ -1,0 +1,13 @@
+{
+  "element_triggers": {
+    "card": ["card"],
+    "kpi": ["kpi", "kpi-tile"],
+    "table": ["table"],
+    "image": ["img"],
+    "chart": ["chart"]
+  },
+  "styles": {
+    "bg-primary": {"fill": "#007bff"},
+    "text-bold": {"font": "bold"}
+  }
+}

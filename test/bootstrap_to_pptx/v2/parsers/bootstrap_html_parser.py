@@ -53,10 +53,10 @@ def parse_html_to_model(html_path: str, mapping_path: str, icon_map_path: Option
     # Decor shapes
     if soup.select_one(sel.get("decor_diagonal", "")):
         logging.debug("Found diagonal decor shape.")
-        model.decor.append(DecorShape(kind="diagonal"))
+        # model.decor.append(DecorShape(kind="diagonal"))
     if soup.select_one(sel.get("decor_circle", "")):
         logging.debug("Found circle decor shape.")
-        model.decor.append(DecorShape(kind="circle"))
+        # model.decor.append(DecorShape(kind="circle"))
 
     # Title & Subtitle
     title = soup.select_one(sel.get("title", ""))

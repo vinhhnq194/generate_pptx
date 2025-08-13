@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Tích hợp Hụi/Họ/Phường (ROSCA) vào ứng dụng tài chính số — Case Slides</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#111111;
+      --muted:#6c757d;
+      --line:#e9ecef;
+    }
+    html,body{height:100%; background:#ffffff; color:var(--ink);}
+    .slide { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 4vh 2vw; }
+    .frame {
+      aspect-ratio: 16 / 9; width: min(92vw, 1600px); max-height: 90vh;
+      background:#fff; border:1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      display:flex; flex-direction:column; padding: min(3.5vh, 48px) min(3.5vw, 48px); position:relative;
+    }
+    .kicker{ letter-spacing:.12em; text-transform:uppercase; font-size:.78rem; color:var(--muted);
+      border-bottom:1px solid var(--line); padding-bottom:.35rem; margin-bottom:1rem; }
+    .title{ font-weight:600; line-height:1.2; margin: 0 0 .5rem 0; }
+    .subtle{ color:var(--muted); font-size: .95rem; }
+    .accent { position:absolute; left:0; top:0; height:100%; width:6px; background:#000; opacity:.85; }
+    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap: min(2.4vh,28px) min(2.4vw,28px); margin-top: 1rem; }
+    @media (max-width: 992px){ .grid{ grid-template-columns: 1fr; } }
+    .block{ border:1px solid var(--line); border-left:4px solid #000; padding:1rem; }
+    .block h6{ text-transform:uppercase; letter-spacing:.06em; font-size:.82rem; color:#000; margin:0 0 .35rem 0; }
+    .block ul{ margin:0; padding-left:1.15rem; }
+    .block li{ margin:.35rem 0; }
+    .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:center;
+      padding-top: .7rem; border-top:1px solid var(--line); font-size:.82rem; color:var(--muted); }
+    .toc{ position: fixed; top: 14px; right: 16px; background:#fff; border:1px solid var(--line);
+      padding:.5rem .75rem; border-radius: .375rem; box-shadow:0 4px 16px rgba(0,0,0,.06); z-index: 20; }
+    .toc a{ color:var(--ink); text-decoration:none; margin-left:.2rem; }
+    .dot{ display:inline-block; width:10px; height:10px; border-radius:50%; background:#000; opacity:.25; margin:0 .15rem; }
+    .toc a:hover .dot{ opacity:.55; }
+    .leadish{ font-size:1.06rem; }
+    .table thead th{ text-transform:uppercase; font-size:.82rem; letter-spacing:.04em; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav dots -->
+  <div class="toc">
+    <span class="me-1 text-uppercase small text-muted">Trang</span>
+    <a href="#cover"><span class="dot"></span></a>
+    <a href="#alat"><span class="dot"></span></a>
+    <a href="#mypenny"><span class="dot"></span></a>
+    <a href="#mapan"><span class="dot"></span></a>
+    <a href="#tigo"><span class="dot"></span></a>
+    <a href="#summary"><span class="dot"></span></a>
+    <a href="#sources"><span class="dot"></span></a>
+  </div>
+
+  <!-- Cover -->
+  <section class="slide" id="cover">
+    <div class="frame">
+      <div class="accent"></div>
+      <div class="kicker">Báo cáo điều hành</div>
+      <h1 class="title display-6">Tích hợp mô hình Hụi/Họ/Phường (ROSCA) vào ứng dụng tài chính số</h1>
+      <p class="leadish subtle mb-3">
+        Các nghiên cứu điển hình về ví điện tử & ngân hàng số bổ sung tính năng tiết kiệm nhóm xoay vòng — tác động đến: tăng trưởng người dùng, tiền gửi, mức độ gắn bó và tần suất sử dụng.
+      </p>
+      <div class="grid">
+        <div class="block">
+          <h6>Bối cảnh</h6>
+          <ul>
+            <li>Sản phẩm ban đầu: thanh toán, chuyển tiền, ngân hàng cơ bản.</li>
+            <li>Bổ sung Hụi/Họ/Phường: tiết kiệm nhóm, nhận tiền luân phiên, “squad” tiết kiệm.</li>
+            <li>Đo lường tác động: tiền gửi, giữ chân, MAU, “stickiness”.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Phạm vi case</h6>
+          <ul>
+            <li>ALAT by Wema Bank (Nigeria)</li>
+            <li>MyPennyTree (Nigeria)</li>
+            <li>Mapan (Indonesia)</li>
+            <li>Tigo Cash “Paaré” (Chad)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot">
+        <div>Đen–trắng · Tỉ lệ 16:9</div>
+        <div>Phong cách consulting</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide: ALAT -->
+  <section class="slide" id="alat">
+    <div class="frame">
+      <div class="accent"></div>
+      <div class="kicker">Case 1</div>
+      <h2 class="title h3">ALAT by Wema Bank (Nigeria)</h2>
+      <div class="grid">
+        <div class="block">
+          <h6>Phạm vi sản phẩm ban đầu</h6>
+          <ul>
+            <li>Ra mắt 5/2017: ngân hàng số đầu tiên của Nigeria (mở tài khoản từ xa, chuyển khoản, thanh toán hóa đơn, vay cá nhân, thẻ ảo).</li>
+            <li>Năm đầu: &gt;280.000 tài khoản; &gt; ₦2,2 tỷ tiền gửi (~19,5 triệu USD).</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Tính năng Hụi/Họ/Phường bổ sung</h6>
+          <ul>
+            <li><strong>ALAT Goals</strong>: Mục tiêu cố định, mục tiêu linh hoạt, “Stash”.</li>
+            <li><strong>Tiết kiệm nhóm theo mục tiêu</strong> & <strong>Tiết kiệm xoay vòng</strong> (esusu) — lãi khuyến khích ~10%/năm.</li>
+            <li>Triển khai ~cuối 2017 (trong năm đầu sau khi ra mắt).</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Kết quả kinh doanh</h6>
+          <ul>
+            <li>Năm đầu của Goals: 13.267 người tiết kiệm &gt; ₦7 tỷ (~19 triệu USD), trung bình ~₦1 tỷ/tháng.</li>
+            <li>Dòng tiền gửi tăng mạnh; “stickiness” và tần suất tiết kiệm hàng tháng ↑.</li>
+            <li>Lãi suất ưu đãi thu hút khách hàng mới; tiết kiệm nhóm tạo cam kết ngang hàng.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Phản hồi & gắn bó</h6>
+          <ul>
+            <li>“Tiết kiệm dễ như chi tiêu” — tự động trích & theo dõi tiến độ theo thời gian thực.</li>
+            <li>Esusu quen thuộc khi được số hóa, mở rộng hấp dẫn cho tài chính cộng đồng.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Bài học chiến lược</h6>
+          <ul>
+            <li>Thiết kế theo thói quen địa phương (vấn đề chính là kỷ luật, không phải thu nhập).</li>
+            <li>Công cụ hợp tác + khuyến khích hữu hình → tiền gửi ↑, giữ chân ↑.</li>
+            <li>Khác biệt hóa so với ngân hàng truyền thống bằng tài chính cộng đồng.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot"><div>ALAT Goals · Nhóm & xoay vòng</div><div>Tiền gửi ↑ · Gắn bó ↑</div></div>
+    </div>
+  </section>
+
+  <!-- Slide: MyPennyTree -->
+  <section class="slide" id="mypenny">
+    <div class="frame">
+      <div class="accent"></div>
+      <div class="kicker">Case 2</div>
+      <h2 class="title h3">MyPennyTree (Youth Savings App, Nigeria)</h2>
+      <div class="grid">
+        <div class="block">
+          <h6>Phạm vi sản phẩm ban đầu</h6>
+          <ul>
+            <li>Fintech cho người trẻ (sinh viên, đi làm sớm): ví tiết kiệm, lập ngân sách, khoản vay nhỏ.</li>
+            <li>Tính năng tiết kiệm cá nhân ban đầu có mức độ tham gia khiêm tốn; khó hình thành thói quen.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Tính năng nhóm được bổ sung</h6>
+          <ul>
+            <li><strong>Savings Squads</strong>: bạn bè cùng tiết kiệm / song song, có bảng xếp hạng.</li>
+            <li><strong>Gamified Challenges</strong>: thử thách theo thời gian, streak, phần thưởng.</li>
+            <li>Đưa vào ~2021–2022 sau khi nhận diện cần “thiết kế gắn kết” (không chỉ tính năng).</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Kết quả kinh doanh</h6>
+          <ul>
+            <li><strong>+30%</strong> giữ chân; <strong>+40%</strong> tổng số tiền tiết kiệm trong 1 năm.</li>
+            <li>Lan truyền nội bộ trường học qua squads; MAU ↑; số dư bình quân ↑.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Hành vi & gắn bó</h6>
+          <ul>
+            <li>Trách nhiệm ngang hàng + cạnh tranh thân thiện → dùng app mang tính thói quen.</li>
+            <li>Chia sẻ thành tích trên mạng xã hội → tăng trưởng tự nhiên.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Bài học chiến lược</h6>
+          <ul>
+            <li>Mượn cơ chế mạng xã hội & trò chơi để thay đổi hành vi tài chính.</li>
+            <li>Nguyên lý hụi/họ có thể hiện đại hóa (kỷ luật & cộng đồng mà không cần xoay vòng truyền thống).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot"><div>Squads & Challenges</div><div>Retention ↑ · Savings Volume ↑</div></div>
+    </div>
+  </section>
+
+  <!-- Slide: Mapan -->
+  <section class="slide" id="mapan">
+    <div class="frame">
+      <div class="accent"></div>
+      <div class="kicker">Case 3</div>
+      <h2 class="title h3">Mapan (Digital Arisan by Gojek, Indonesia)</h2>
+      <div class="grid">
+        <div class="block">
+          <h6>Phạm vi sản phẩm ban đầu</h6>
+          <ul>
+            <li>Tiền thân Ruma (2009): thanh toán/tín dụng di động cho người thu nhập thấp.</li>
+            <li>2015 pivot: ứng dụng <strong>Mapan</strong> số hóa <em>arisan</em> (hụi/họ) kết hợp thương mại.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Tính năng Hụi/Họ/Phường</h6>
+          <ul>
+            <li>Ví nhóm; bốc thăm thứ tự nhận tiền ngẫu nhiên; sổ theo dõi minh bạch.</li>
+            <li>Nhận lượt được quy đổi để mua đồ gia dụng giảm giá trong marketplace.</li>
+            <li>Thủ lĩnh cộng đồng (MUMs) lập nhóm; nhận hoa hồng nhỏ.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Timeline</h6>
+          <ul>
+            <li>2015–2016: chuyển hẳn sang mô hình tiết kiệm nhóm + thương mại.</li>
+            <li>2017: Gojek mua lại; 2022: tách ra; 2022: Series A; 2023+: mở rộng.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Kết quả kinh doanh</h6>
+          <ul>
+            <li>&gt;3 triệu hộ gia đình (2022); doanh thu <strong>x3</strong> theo TechCrunch.</li>
+            <li>Mục tiêu 10 triệu hộ vào 2026; gắn bó cao nhờ chu kỳ góp định kỳ.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Tác động & bài học</h6>
+          <ul>
+            <li>Trao quyền phụ nữ (thu nhập + vị thế); minh bạch → niềm tin ↑.</li>
+            <li>Phù hợp văn hóa + khuyến khích thủ lĩnh → lan tỏa & bền vững.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot"><div>Arisan + Thương mại</div><div>Quy mô ↑ · Doanh thu ↑</div></div>
+    </div>
+  </section>
+
+  <!-- Slide: Tigo Paaré -->
+  <section class="slide" id="tigo">
+    <div class="frame">
+      <div class="accent"></div>
+      <div class="kicker">Case 4</div>
+      <h2 class="title h3">Tigo Cash “Paaré” (Mobile Money Groups, Chad)</h2>
+      <div class="grid">
+        <div class="block">
+          <h6>Phạm vi sản phẩm ban đầu</h6>
+          <ul>
+            <li>Tigo Cash: ví di động chuẩn (P2P, hóa đơn, nạp tiền).</li>
+            <li>“Paaré” (hụi/họ) phổ biến offline trên toàn quốc.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Tính năng Hụi/Họ/Phường</h6>
+          <ul>
+            <li><strong>Tigo Cash Paaré</strong> (cuối 2015): ví nhóm dùng chung; thành viên góp từ ví cá nhân.</li>
+            <li>Kế hoạch linh hoạt; duyệt rút qua SMS; minh bạch số dư cho mọi người.</li>
+            <li>Tigo như “thành viên vô hình” cộng bonus vào quỹ (khuyến khích tiết kiệm).</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Timeline</h6>
+          <ul>
+            <li>Pilot cuối 2015 → mở rộng 2016 → cuối 2016 ra mắt đầy đủ.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Kết quả kinh doanh</h6>
+          <ul>
+            <li>&gt;<strong>53.000</strong> nhóm đến cuối 2016; cash-in & giá trị lưu trữ ↑ mạnh.</li>
+            <li>Đóng góp vào ~<strong>10,1%</strong> tăng trưởng doanh thu YoY (2016) của Tigo Chad.</li>
+            <li>Danh sách chờ ~27.000 nhóm cho thấy nhu cầu dồn nén lớn.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Hành vi & bài học</h6>
+          <ul>
+            <li>Thành viên ở xa tham gia qua di động; niềm tin ↑ (ai cũng xem được số dư).</li>
+            <li>Giá trị gia tăng (bonus + an toàn) kéo thực hành phi chính thức vào kênh số.</li>
+            <li>Hợp tác NGO/hợp tác xã; “onboard” cả nhóm → gắn bó bền.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot"><div>Group wallet = lợi thế cạnh tranh</div><div>Deposits ↑ · Loyalty ↑</div></div>
+    </div>
+  </section>
+
+  <!-- Slide: Summary Comparison -->
+  <section class="slide" id="summary">
+    <div class="frame">
+      <div class="accent"></div>
+      <div class="kicker">Tóm tắt so sánh</div>
+      <h2 class="title h4">So sánh 4 nghiên cứu điển hình</h2>
+      <div class="mt-2" style="overflow:auto;">
+        <table class="table table-sm align-middle">
+          <thead>
+            <tr>
+              <th>Case</th>
+              <th>Năm ra mắt SP ban đầu</th>
+              <th>Thời điểm thêm Hụi/Họ/Phường</th>
+              <th>Kết quả nổi bật</th>
+              <th>Bài học chiến lược</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ALAT</strong> (Nigeria)</td>
+              <td>2017</td>
+              <td>~Cuối 2017 (ALAT Goals)</td>
+              <td>13.267 người tiết kiệm &gt; ₦7B (~$19M) năm đầu; tiền gửi & stickiness ↑</td>
+              <td>Thiết kế theo thói quen địa phương; cộng đồng + khuyến khích → tăng tiền gửi & giữ chân</td>
+            </tr>
+            <tr>
+              <td><strong>MyPennyTree</strong> (Nigeria)</td>
+              <td>~2020</td>
+              <td>2021–2022 (Squads & Challenges)</td>
+              <td>Retention +30%; tổng tiền tiết kiệm +40% sau 1 năm; tăng trưởng lan truyền</td>
+              <td>Áp dụng cơ chế mạng xã hội & trò chơi để thay đổi hành vi tài chính</td>
+            </tr>
+            <tr>
+              <td><strong>Mapan</strong> (Indonesia)</td>
+              <td>Ruma 2009 → pivot Mapan 2015</td>
+              <td>2015–2016 (Arisan số + thương mại)</td>
+              <td>&gt;3M hộ (2022); doanh thu x3; mục tiêu 10M hộ vào 2026</td>
+              <td>Phù hợp văn hóa + trao quyền thủ lĩnh địa phương → quy mô & bền vững</td>
+            </tr>
+            <tr>
+              <td><strong>Tigo Paaré</strong> (Chad)</td>
+              <td>Ví Tigo Cash 2010s</td>
+              <td>Cuối 2015 (pilot) → 2016 (mở rộng)</td>
+              <td>&gt;53k nhóm (2016); đóng góp ~10,1% tăng trưởng doanh thu; waitlist ~27k nhóm</td>
+              <td>Onboard cả nhóm; minh bạch & bonus kéo thực hành phi chính thức vào kênh số</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="foot"><div>Bảng Bootstrap · nhìn nhanh KPI & bài học</div><div>So sánh đa chiều</div></div>
+    </div>
+  </section>
+
+  <!-- Slide: Sources -->
+  <section class="slide" id="sources">
+    <div class="frame">
+      <div class="accent"></div>
+      <div class="kicker">Phụ lục</div>
+      <h2 class="title h4">Nguồn tham khảo</h2>
+      <div class="grid">
+        <div class="block">
+          <h6>ALAT / MyPennyTree</h6>
+          <ul class="small">
+            <li>Vanguard — “13,000 people saved N7bn through ALAT Goal — Wema Bank”.</li>
+            <li>YNaija — “How 13,000 people saved over N7bn in one year through ALAT Goals”.</li>
+            <li>Business Insider Africa — Phỏng vấn Chidinma Ndego (Retention +30%, Savings +40%).</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Mapan</h6>
+          <ul class="small">
+            <li>TechCrunch — “Mapan’s services help low-income Indonesian users afford goods and services”.</li>
+            <li>Flourish Ventures — “Why We Invested in Mapan”.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Tigo Cash “Paaré”</h6>
+          <ul class="small">
+            <li>Millicom Annual Report 2016 — Mobile money Chad; 53k nhóm.</li>
+            <li>GSMA M4D — Case study Tigo Cash Paaré (pilot, tính năng, waitlist 27k).</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h6>Lưu ý</h6>
+          <ul class="small">
+            <li>Số liệu & mốc thời gian được rút gọn cho mục đích trình chiếu.</li>
+            <li>Tham chiếu chi tiết xem báo cáo đầy đủ kèm theo.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot"><div>Đen–trắng · Tối giản</div><div>Hết bộ slide</div></div>
+    </div>
+  </section>
+
+</body>
+</html>
