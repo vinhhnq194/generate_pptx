@@ -26,3 +26,13 @@ utils/text_fit.py: simple text fitting.
 Bootstrap icons are fonts; map them to PNG/SVG via icon_map.json if needed.
 Numbered lists are prefixed (1., 2.) for simplicity.
 For brand consistency, consider using a PPTX template and load it in render_engine.py.
+
+git status
+git add .
+git commit -m "comment"
+git push origin main
+
+git pull origin main --rebase
+git log --oneline --graph --all
+    
+git reset --hard HEAD
