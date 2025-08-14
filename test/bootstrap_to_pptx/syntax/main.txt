@@ -1,3 +1,4 @@
 python main.py --html "test.html" --out "consulting_slide.pptx"
 python main.py --html "test_2.html" --out "consulting_slide_2.pptx"
 
+python main.py --html "test.html" --out "deck.pptx" --pipeline legacy

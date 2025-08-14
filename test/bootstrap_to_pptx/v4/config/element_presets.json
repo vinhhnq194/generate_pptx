@@ -1,0 +1,9 @@
+{
+  "card":  { "rounded": true, "shadow": false, "padding_in": [0.32, 0.32, 0.32, 0.32], "text": { "body_pt": 15, "bullet_pt": 15 } },
+  "kpi":   { "rounded": true, "shadow": false, "headline_pt": 26, "caption_pt": 11, "bg_hex": "#0d6efd" },
+  "steps": { "rounded": true, "shadow": false, "item_pt": 15 },
+  "icon":  { "rounded": true, "shadow": false, "caption_pt": 11 },
+  "table": { "header_fill": "#f1f3f5", "header_pt": 12, "cell_pt": 11 },
+  "image": { "fit": "contain" },
+  "text":  { "pt": 15 }
+}

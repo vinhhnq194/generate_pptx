@@ -1,0 +1,18 @@
+{
+  "page":  { "width_in": 13.333, "height_in": 7.5, "margins_in": [0.7, 0.7, 0.7, 0.7], "gutter_in": 0.22 },
+  "bands": { "row_top_in": 1.6, "row_height_in": 5.1 },
+
+  "title":    { "size_pt": 36, "color": "#0d2d52", "top_in": 0.50 },
+  "subtitle": { "size_pt": 17, "color": "#6c757d", "top_in": 1.06 },
+
+  "narrative": { "body_size_pt": 15, "bullets_size_pt": 15, "padding_in": [0.40, 0.36, 0.40, 0.36] },
+  "kpi":       { "height_in": 1.00, "gap_in": 0.24, "headline_pt": 26, "caption_pt": 11, "wrap_limit": 32 },
+  "steps":     { "height_ratio": 0.34, "items_pt": 15, "gap_below_in": 0.24 },
+  "icons":     { "height_in": 1.25, "gap_in": 0.24, "caption_pt": 11, "gap_below_in": 0.26, "img_h_in": 0.56 },
+  "outlook":   { "min_height_in": 1.55, "body_pt": 15, "padding_in": [0.36, 0.34, 0.36, 0.34] },
+
+  "footer": { "height_in": 0.32, "left_pt": 9, "right_pt": 9, "prefix": "Pg " },
+
+  "radii":  { "card": 0.16 },
+  "shadow": { "enabled": false }
+}

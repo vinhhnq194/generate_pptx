@@ -1,0 +1,23 @@
+//Sửa lỗi 
+
+Bắt đủ element Bootstrap – nhận diện cả row lồng nhau, col có breakpoint, và các khối dạng card nhưng không có .card.
+Hàm tính grid – xử lý wrap theo hàng và offset chính xác để tránh phần tử bị rải lung tung.
+Hàm xác định vị trí – chỉ module layout solver mới set .left/.top/.width/.height, phần style mapping chỉ xử lý giao diện.
+
+Giữ chữ wrapped – bật word_wrap và auto_size để text không tràn ra ngoài shape.
+
+//Cải thiện cấu trúc
+ColumnGroup – gom item trong một cột và xếp chồng theo tỷ lệ style.
+Quy tắc chiều cao hàng & stacking – chiều cao cột dựa trên presets.
+Thang spacing & quy đổi rem→inch – chuẩn hoá quy đổi kích thước.
+Giải quyết breakpoint – chọn span từ breakpoint lớn nhất khả dụng. > less priority
+
+//Nâng cấp
+Debug overlay grid để kiểm tra vị trí phần tử. > only place on blank space
+Giới hạn font min/max + cắt chữ tránh chữ quá nhỏ.
+Render biểu đồ từ thuộc tính data-chart trong HTML.
+
+//Tính năng mới
+Hỗ trợ nhiều slide qua .page-break hoặc <section>.
+Tích hợp template – dùng master & theme của PPTX.
+CLI diagnostics – xuất ILT & layout JSON để debug.

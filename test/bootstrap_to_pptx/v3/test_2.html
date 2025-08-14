@@ -1,383 +1,334 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Tích hợp Hụi/Họ/Phường (ROSCA) vào ứng dụng tài chính số — Case Slides</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Bootstrap CSS via CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    :root{
-      --ink:#111111;
-      --muted:#6c757d;
-      --line:#e9ecef;
-    }
-    html,body{height:100%; background:#ffffff; color:var(--ink);}
-    .slide { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 4vh 2vw; }
-    .frame {
-      aspect-ratio: 16 / 9; width: min(92vw, 1600px); max-height: 90vh;
-      background:#fff; border:1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      display:flex; flex-direction:column; padding: min(3.5vh, 48px) min(3.5vw, 48px); position:relative;
-    }
-    .kicker{ letter-spacing:.12em; text-transform:uppercase; font-size:.78rem; color:var(--muted);
-      border-bottom:1px solid var(--line); padding-bottom:.35rem; margin-bottom:1rem; }
-    .title{ font-weight:600; line-height:1.2; margin: 0 0 .5rem 0; }
-    .subtle{ color:var(--muted); font-size: .95rem; }
-    .accent { position:absolute; left:0; top:0; height:100%; width:6px; background:#000; opacity:.85; }
-    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap: min(2.4vh,28px) min(2.4vw,28px); margin-top: 1rem; }
-    @media (max-width: 992px){ .grid{ grid-template-columns: 1fr; } }
-    .block{ border:1px solid var(--line); border-left:4px solid #000; padding:1rem; }
-    .block h6{ text-transform:uppercase; letter-spacing:.06em; font-size:.82rem; color:#000; margin:0 0 .35rem 0; }
-    .block ul{ margin:0; padding-left:1.15rem; }
-    .block li{ margin:.35rem 0; }
-    .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:center;
-      padding-top: .7rem; border-top:1px solid var(--line); font-size:.82rem; color:var(--muted); }
-    .toc{ position: fixed; top: 14px; right: 16px; background:#fff; border:1px solid var(--line);
-      padding:.5rem .75rem; border-radius: .375rem; box-shadow:0 4px 16px rgba(0,0,0,.06); z-index: 20; }
-    .toc a{ color:var(--ink); text-decoration:none; margin-left:.2rem; }
-    .dot{ display:inline-block; width:10px; height:10px; border-radius:50%; background:#000; opacity:.25; margin:0 .15rem; }
-    .toc a:hover .dot{ opacity:.55; }
-    .leadish{ font-size:1.06rem; }
-    .table thead th{ text-transform:uppercase; font-size:.82rem; letter-spacing:.04em; }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Digital Finance Apps & ROSCA Integration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            overflow: auto;
+        }
+
+        .slide-container {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        .slide {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 5rem;
+            scroll-snap-align: start;
+        }
+
+        .content-box {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            overflow: auto;
+        }
+
+        .header-slide h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #121212;
+        }
+
+        .header-slide p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #555;
+            margin-top: 1rem;
+        }
+
+        .case-study-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-section {
+            margin-bottom: 2rem;
+        }
+
+        .case-study-section h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+
+        .list-unstyled {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .list-unstyled li strong {
+            color: #007bff;
+        }
+
+        .citation {
+            font-size: 0.8rem;
+            color: #888;
+            text-align: right;
+            margin-top: 1rem;
+        }
+        
+        .divider {
+            border-bottom: 1px solid #e9ecef;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .text-lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+    </style>
 </head>
+
 <body>
-
-  <!-- Nav dots -->
-  <div class="toc">
-    <span class="me-1 text-uppercase small text-muted">Trang</span>
-    <a href="#cover"><span class="dot"></span></a>
-    <a href="#alat"><span class="dot"></span></a>
-    <a href="#mypenny"><span class="dot"></span></a>
-    <a href="#mapan"><span class="dot"></span></a>
-    <a href="#tigo"><span class="dot"></span></a>
-    <a href="#summary"><span class="dot"></span></a>
-    <a href="#sources"><span class="dot"></span></a>
-  </div>
-
-  <!-- Cover -->
-  <section class="slide" id="cover">
-    <div class="frame">
-      <div class="accent"></div>
-      <div class="kicker">Báo cáo điều hành</div>
-      <h1 class="title display-6">Tích hợp mô hình Hụi/Họ/Phường (ROSCA) vào ứng dụng tài chính số</h1>
-      <p class="leadish subtle mb-3">
-        Các nghiên cứu điển hình về ví điện tử & ngân hàng số bổ sung tính năng tiết kiệm nhóm xoay vòng — tác động đến: tăng trưởng người dùng, tiền gửi, mức độ gắn bó và tần suất sử dụng.
-      </p>
-      <div class="grid">
-        <div class="block">
-          <h6>Bối cảnh</h6>
-          <ul>
-            <li>Sản phẩm ban đầu: thanh toán, chuyển tiền, ngân hàng cơ bản.</li>
-            <li>Bổ sung Hụi/Họ/Phường: tiết kiệm nhóm, nhận tiền luân phiên, “squad” tiết kiệm.</li>
-            <li>Đo lường tác động: tiền gửi, giữ chân, MAU, “stickiness”.</li>
-          </ul>
+    <div class="slide-container">
+        <div class="slide header-slide">
+            <div class="content-box text-center d-flex align-items-center justify-content-center">
+                <div>
+                    <h1 class="mb-4">Integrating ROSCA Group Savings into Digital Finance Apps: Case Studies</h1>
+                    <p class="lead">
+                        An analysis of how financial technology firms have successfully integrated ROSCA
+                        (Rotating Savings and Credit Association) or group savings features into their digital services.
+                        We examine the strategic rationale, implementation, and outcomes for several key platforms.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="block">
-          <h6>Phạm vi case</h6>
-          <ul>
-            <li>ALAT by Wema Bank (Nigeria)</li>
-            <li>MyPennyTree (Nigeria)</li>
-            <li>Mapan (Indonesia)</li>
-            <li>Tigo Cash “Paaré” (Chad)</li>
-          </ul>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2 class="case-study-title">Case 1: ALAT by Wema Bank (Nigeria)</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="case-study-section">
+                            <h3>Initial Product Scope</h3>
+                            <p>Nigeria’s first fully digital bank (launched May 2017), offering remote account
+                                opening, fund transfers, bill payments, and loans. Early success with over 280,000
+                                accounts and ₦2.2 billion in deposits in its first year.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>ROSCA Features Added</h3>
+                            <p>Introduced <strong>"ALAT Goals"</strong> in late 2017, a suite of savings features
+                                including:
+                                <ul>
+                                    <li>Group Target Savings (friends saving together for a shared goal).</li>
+                                    <li>Rotating Group Savings (<em>esusu</em> model) where members take turns receiving
+                                        a lump sum.</li>
+                                </ul>
+                                These features offered a competitive <strong>10% annual interest rate</strong> as an
+                                incentive.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Business Outcomes</h3>
+                            <ul class="list-unstyled">
+                                <li><strong>User Engagement:</strong> 13,267 users saved over ₦7 billion (approx. $19
+                                    million) in the first year of Goals.</li>
+                                <li><strong>Deposit Growth:</strong> A substantial boost to deposits, far outpacing the
+                                    initial ₦2.2 billion total deposits.</li>
+                                <li><strong>App Stickiness:</strong> Increased monthly active saving behavior and
+                                    customer loyalty through automated contributions and peer accountability.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="case-study-section">
+                            <h3>User Feedback & Engagement</h3>
+                            <p>Positive response to the social aspect, which created a sense of accountability and
+                                motivation. Users appreciated the digital version of familiar cultural practices like
+                                <em>esusu</em>, making saving feel "as easy as spending" and deepening customer loyalty.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Strategic Rationale & Lessons</h3>
+                            <p>Wema Bank leveraged a well-known local financial habit (<em>esusu</em>) to differentiate
+                                its product. The key lesson is that integrating group savings can significantly boost
+                                deposits and active usage by aligning with cultural norms and user psychology (making
+                                saving communal and goal-oriented).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="foot">
-        <div>Đen–trắng · Tỉ lệ 16:9</div>
-        <div>Phong cách consulting</div>
-      </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2 class="case-study-title">Case 2: MyPennyTree (Youth Savings App, Nigeria)</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="case-study-section">
+                            <h3>Initial Product Scope</h3>
+                            <p>A youth-focused app offering basic savings wallets and budgeting tools. Initially, it
+                                struggled with low engagement as functionality alone did not drive consistent saving
+                                habits among young users.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Group Savings Features Added</h3>
+                            <p>Introduced social and gamified features:
+                                <ul>
+                                    <li><strong>"Savings Squads"</strong> for group saving with peer accountability.</li>
+                                    <li><strong>Gamified Challenges</strong> with leaderboards and rewards to make
+                                        saving a social game.</li>
+                                </ul>
+                                This adapted ROSCA principles by creating collaborative and competitive environments for
+                                savings.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Business Outcomes</h3>
+                            <ul class="list-unstyled">
+                                <li><strong>Retention:</strong> A 30% increase in user retention.</li>
+                                <li><strong>Savings Volume:</strong> A 40% increase in total savings volume within a
+                                    year.</li>
+                                <li><strong>Growth:</strong> New customer growth driven by viral effects (friends
+                                    inviting friends to squads).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="case-study-section">
+                            <h3>User Feedback & Engagement</h3>
+                            <p>Young users enthusiastically embraced the peer accountability and friendly competition of
+                                Savings Squads. The gamified challenges and rewards made saving fun, turning one-off
+                                interactions into habitual usage, and significantly increasing the app's stickiness.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Strategic Rationale & Lessons</h3>
+                            <p>The company realized that for a young demographic, making finance social and game-like
+                                was crucial for engagement. This case demonstrates that borrowing mechanics from social
+                                media and gaming can lead to a dramatic improvement in user metrics, transforming a
+                                solitary chore into a community-driven activity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2 class="case-study-title">Case 3: Mapan (Digital Arisan by Gojek, Indonesia)</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="case-study-section">
+                            <h3>Initial Product Scope</h3>
+                            <p>Started as a mobile platform for basic financial services (payments, micro-loans) for
+                                low-income communities. The model was not highly scalable until a key pivot in 2015.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>ROSCA Features Added</h3>
+                            <p>Pivoted to a digital version of Indonesia’s traditional <strong><em>arisan</em></strong>
+                                (a rotating savings and credit association) by 2015. Mapan's app integrated the group
+                                savings model with an e-commerce marketplace, allowing groups to save for and purchase
+                                household goods at a discount. Community leaders (MUMs) were empowered to organize
+                                groups and earn commissions.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Business Outcomes</h3>
+                            <ul class="list-unstyled">
+                                <li><strong>User Base:</strong> Grew to over 3 million members by 2022.</li>
+                                <li><strong>Revenue:</strong> Revenue tripled after adopting the digital arisan model.</li>
+                                <li><strong>Engagement:</strong> High activity rates due to recurring group contributions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="case-study-section">
+                            <h3>User Feedback & Engagement</h3>
+                            <p>Users, particularly low-income women, felt empowered. The digital format provided
+                                transparency and security, and the ability to purchase goods via group saving was
+                                highly valued. The model enhanced a cultural practice, fostering strong retention and
+                                social bonding.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Strategic Rationale & Lessons</h3>
+                            <p>Mapan leveraged the deep trust and penetration of <em>arisan</em> groups as a channel for
+                                financial services. This strategy overcame adoption barriers by "meeting users where they
+                                are." A key lesson is that cultural alignment is paramount, and empowering local
+                                influencers (group leaders) can create a powerful, self-sustaining distribution channel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <h2 class="case-study-title">Case 4: Tigo Cash "Paaré" (Mobile Money Groups, Chad)</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="case-study-section">
+                            <h3>Initial Product Scope</h3>
+                            <p>Tigo Chad’s mobile money service offered standard P2P transfers and bill payments. The
+                                company sought to deepen usage by addressing the local savings habit of <strong>
+                                <em>Paaré</em></strong> (informal savings groups).</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>ROSCA Features Added</h3>
+                            <p>Launched <strong>"Tigo Cash Paaré"</strong> in 2015, a mobile-enabled group savings
+                                account. Features included shared wallets with multiple contributors, configurable
+                                plans, and designated approval for withdrawals. Tigo also incentivized saving by
+                                contributing a small bonus to the group’s pot.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Business Outcomes</h3>
+                            <ul class="list-unstyled">
+                                <li><strong>Growth:</strong> Scaled to over 53,000 savings groups by the end of 2016.</li>
+                                <li><strong>Usage:</strong> Drove a sharp increase in cash-in transactions and deposit
+                                    volumes on the platform.</li>
+                                <li><strong>Retention:</strong> Group wallets are "stickier" than individual wallets,
+                                    creating a competitive moat and ensuring long-term use.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="case-study-section">
+                            <h3>User Feedback & Engagement</h3>
+                            <p>Users appreciated the convenience, security, and transparency of the digital solution. The
+                                ability for remote members to participate was transformative, and the Tigo bonus was a
+                                powerful incentive. The service empowered women, who often lead these groups, to gain a
+                                stronger financial footing.</p>
+                        </div>
+                        <div class="case-study-section">
+                            <h3>Strategic Rationale & Lessons</h3>
+                            <p>Tigo's strategy was to adapt its innovation to existing social practices, onboarding entire
+                                groups at once instead of one user at a time. The key lesson is that enhancing what
+                                people are already doing (informal savings) with technology can lead to massive user
+                                acquisition, retention, and loyalty, especially in markets with strong community-based
+                                financial traditions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
-
-  <!-- Slide: ALAT -->
-  <section class="slide" id="alat">
-    <div class="frame">
-      <div class="accent"></div>
-      <div class="kicker">Case 1</div>
-      <h2 class="title h3">ALAT by Wema Bank (Nigeria)</h2>
-      <div class="grid">
-        <div class="block">
-          <h6>Phạm vi sản phẩm ban đầu</h6>
-          <ul>
-            <li>Ra mắt 5/2017: ngân hàng số đầu tiên của Nigeria (mở tài khoản từ xa, chuyển khoản, thanh toán hóa đơn, vay cá nhân, thẻ ảo).</li>
-            <li>Năm đầu: &gt;280.000 tài khoản; &gt; ₦2,2 tỷ tiền gửi (~19,5 triệu USD).</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Tính năng Hụi/Họ/Phường bổ sung</h6>
-          <ul>
-            <li><strong>ALAT Goals</strong>: Mục tiêu cố định, mục tiêu linh hoạt, “Stash”.</li>
-            <li><strong>Tiết kiệm nhóm theo mục tiêu</strong> & <strong>Tiết kiệm xoay vòng</strong> (esusu) — lãi khuyến khích ~10%/năm.</li>
-            <li>Triển khai ~cuối 2017 (trong năm đầu sau khi ra mắt).</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Kết quả kinh doanh</h6>
-          <ul>
-            <li>Năm đầu của Goals: 13.267 người tiết kiệm &gt; ₦7 tỷ (~19 triệu USD), trung bình ~₦1 tỷ/tháng.</li>
-            <li>Dòng tiền gửi tăng mạnh; “stickiness” và tần suất tiết kiệm hàng tháng ↑.</li>
-            <li>Lãi suất ưu đãi thu hút khách hàng mới; tiết kiệm nhóm tạo cam kết ngang hàng.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Phản hồi & gắn bó</h6>
-          <ul>
-            <li>“Tiết kiệm dễ như chi tiêu” — tự động trích & theo dõi tiến độ theo thời gian thực.</li>
-            <li>Esusu quen thuộc khi được số hóa, mở rộng hấp dẫn cho tài chính cộng đồng.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Bài học chiến lược</h6>
-          <ul>
-            <li>Thiết kế theo thói quen địa phương (vấn đề chính là kỷ luật, không phải thu nhập).</li>
-            <li>Công cụ hợp tác + khuyến khích hữu hình → tiền gửi ↑, giữ chân ↑.</li>
-            <li>Khác biệt hóa so với ngân hàng truyền thống bằng tài chính cộng đồng.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="foot"><div>ALAT Goals · Nhóm & xoay vòng</div><div>Tiền gửi ↑ · Gắn bó ↑</div></div>
-    </div>
-  </section>
-
-  <!-- Slide: MyPennyTree -->
-  <section class="slide" id="mypenny">
-    <div class="frame">
-      <div class="accent"></div>
-      <div class="kicker">Case 2</div>
-      <h2 class="title h3">MyPennyTree (Youth Savings App, Nigeria)</h2>
-      <div class="grid">
-        <div class="block">
-          <h6>Phạm vi sản phẩm ban đầu</h6>
-          <ul>
-            <li>Fintech cho người trẻ (sinh viên, đi làm sớm): ví tiết kiệm, lập ngân sách, khoản vay nhỏ.</li>
-            <li>Tính năng tiết kiệm cá nhân ban đầu có mức độ tham gia khiêm tốn; khó hình thành thói quen.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Tính năng nhóm được bổ sung</h6>
-          <ul>
-            <li><strong>Savings Squads</strong>: bạn bè cùng tiết kiệm / song song, có bảng xếp hạng.</li>
-            <li><strong>Gamified Challenges</strong>: thử thách theo thời gian, streak, phần thưởng.</li>
-            <li>Đưa vào ~2021–2022 sau khi nhận diện cần “thiết kế gắn kết” (không chỉ tính năng).</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Kết quả kinh doanh</h6>
-          <ul>
-            <li><strong>+30%</strong> giữ chân; <strong>+40%</strong> tổng số tiền tiết kiệm trong 1 năm.</li>
-            <li>Lan truyền nội bộ trường học qua squads; MAU ↑; số dư bình quân ↑.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Hành vi & gắn bó</h6>
-          <ul>
-            <li>Trách nhiệm ngang hàng + cạnh tranh thân thiện → dùng app mang tính thói quen.</li>
-            <li>Chia sẻ thành tích trên mạng xã hội → tăng trưởng tự nhiên.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Bài học chiến lược</h6>
-          <ul>
-            <li>Mượn cơ chế mạng xã hội & trò chơi để thay đổi hành vi tài chính.</li>
-            <li>Nguyên lý hụi/họ có thể hiện đại hóa (kỷ luật & cộng đồng mà không cần xoay vòng truyền thống).</li>
-          </ul>
-        </div>
-      </div>
-      <div class="foot"><div>Squads & Challenges</div><div>Retention ↑ · Savings Volume ↑</div></div>
-    </div>
-  </section>
-
-  <!-- Slide: Mapan -->
-  <section class="slide" id="mapan">
-    <div class="frame">
-      <div class="accent"></div>
-      <div class="kicker">Case 3</div>
-      <h2 class="title h3">Mapan (Digital Arisan by Gojek, Indonesia)</h2>
-      <div class="grid">
-        <div class="block">
-          <h6>Phạm vi sản phẩm ban đầu</h6>
-          <ul>
-            <li>Tiền thân Ruma (2009): thanh toán/tín dụng di động cho người thu nhập thấp.</li>
-            <li>2015 pivot: ứng dụng <strong>Mapan</strong> số hóa <em>arisan</em> (hụi/họ) kết hợp thương mại.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Tính năng Hụi/Họ/Phường</h6>
-          <ul>
-            <li>Ví nhóm; bốc thăm thứ tự nhận tiền ngẫu nhiên; sổ theo dõi minh bạch.</li>
-            <li>Nhận lượt được quy đổi để mua đồ gia dụng giảm giá trong marketplace.</li>
-            <li>Thủ lĩnh cộng đồng (MUMs) lập nhóm; nhận hoa hồng nhỏ.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Timeline</h6>
-          <ul>
-            <li>2015–2016: chuyển hẳn sang mô hình tiết kiệm nhóm + thương mại.</li>
-            <li>2017: Gojek mua lại; 2022: tách ra; 2022: Series A; 2023+: mở rộng.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Kết quả kinh doanh</h6>
-          <ul>
-            <li>&gt;3 triệu hộ gia đình (2022); doanh thu <strong>x3</strong> theo TechCrunch.</li>
-            <li>Mục tiêu 10 triệu hộ vào 2026; gắn bó cao nhờ chu kỳ góp định kỳ.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Tác động & bài học</h6>
-          <ul>
-            <li>Trao quyền phụ nữ (thu nhập + vị thế); minh bạch → niềm tin ↑.</li>
-            <li>Phù hợp văn hóa + khuyến khích thủ lĩnh → lan tỏa & bền vững.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="foot"><div>Arisan + Thương mại</div><div>Quy mô ↑ · Doanh thu ↑</div></div>
-    </div>
-  </section>
-
-  <!-- Slide: Tigo Paaré -->
-  <section class="slide" id="tigo">
-    <div class="frame">
-      <div class="accent"></div>
-      <div class="kicker">Case 4</div>
-      <h2 class="title h3">Tigo Cash “Paaré” (Mobile Money Groups, Chad)</h2>
-      <div class="grid">
-        <div class="block">
-          <h6>Phạm vi sản phẩm ban đầu</h6>
-          <ul>
-            <li>Tigo Cash: ví di động chuẩn (P2P, hóa đơn, nạp tiền).</li>
-            <li>“Paaré” (hụi/họ) phổ biến offline trên toàn quốc.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Tính năng Hụi/Họ/Phường</h6>
-          <ul>
-            <li><strong>Tigo Cash Paaré</strong> (cuối 2015): ví nhóm dùng chung; thành viên góp từ ví cá nhân.</li>
-            <li>Kế hoạch linh hoạt; duyệt rút qua SMS; minh bạch số dư cho mọi người.</li>
-            <li>Tigo như “thành viên vô hình” cộng bonus vào quỹ (khuyến khích tiết kiệm).</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Timeline</h6>
-          <ul>
-            <li>Pilot cuối 2015 → mở rộng 2016 → cuối 2016 ra mắt đầy đủ.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Kết quả kinh doanh</h6>
-          <ul>
-            <li>&gt;<strong>53.000</strong> nhóm đến cuối 2016; cash-in & giá trị lưu trữ ↑ mạnh.</li>
-            <li>Đóng góp vào ~<strong>10,1%</strong> tăng trưởng doanh thu YoY (2016) của Tigo Chad.</li>
-            <li>Danh sách chờ ~27.000 nhóm cho thấy nhu cầu dồn nén lớn.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Hành vi & bài học</h6>
-          <ul>
-            <li>Thành viên ở xa tham gia qua di động; niềm tin ↑ (ai cũng xem được số dư).</li>
-            <li>Giá trị gia tăng (bonus + an toàn) kéo thực hành phi chính thức vào kênh số.</li>
-            <li>Hợp tác NGO/hợp tác xã; “onboard” cả nhóm → gắn bó bền.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="foot"><div>Group wallet = lợi thế cạnh tranh</div><div>Deposits ↑ · Loyalty ↑</div></div>
-    </div>
-  </section>
-
-  <!-- Slide: Summary Comparison -->
-  <section class="slide" id="summary">
-    <div class="frame">
-      <div class="accent"></div>
-      <div class="kicker">Tóm tắt so sánh</div>
-      <h2 class="title h4">So sánh 4 nghiên cứu điển hình</h2>
-      <div class="mt-2" style="overflow:auto;">
-        <table class="table table-sm align-middle">
-          <thead>
-            <tr>
-              <th>Case</th>
-              <th>Năm ra mắt SP ban đầu</th>
-              <th>Thời điểm thêm Hụi/Họ/Phường</th>
-              <th>Kết quả nổi bật</th>
-              <th>Bài học chiến lược</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>ALAT</strong> (Nigeria)</td>
-              <td>2017</td>
-              <td>~Cuối 2017 (ALAT Goals)</td>
-              <td>13.267 người tiết kiệm &gt; ₦7B (~$19M) năm đầu; tiền gửi & stickiness ↑</td>
-              <td>Thiết kế theo thói quen địa phương; cộng đồng + khuyến khích → tăng tiền gửi & giữ chân</td>
-            </tr>
-            <tr>
-              <td><strong>MyPennyTree</strong> (Nigeria)</td>
-              <td>~2020</td>
-              <td>2021–2022 (Squads & Challenges)</td>
-              <td>Retention +30%; tổng tiền tiết kiệm +40% sau 1 năm; tăng trưởng lan truyền</td>
-              <td>Áp dụng cơ chế mạng xã hội & trò chơi để thay đổi hành vi tài chính</td>
-            </tr>
-            <tr>
-              <td><strong>Mapan</strong> (Indonesia)</td>
-              <td>Ruma 2009 → pivot Mapan 2015</td>
-              <td>2015–2016 (Arisan số + thương mại)</td>
-              <td>&gt;3M hộ (2022); doanh thu x3; mục tiêu 10M hộ vào 2026</td>
-              <td>Phù hợp văn hóa + trao quyền thủ lĩnh địa phương → quy mô & bền vững</td>
-            </tr>
-            <tr>
-              <td><strong>Tigo Paaré</strong> (Chad)</td>
-              <td>Ví Tigo Cash 2010s</td>
-              <td>Cuối 2015 (pilot) → 2016 (mở rộng)</td>
-              <td>&gt;53k nhóm (2016); đóng góp ~10,1% tăng trưởng doanh thu; waitlist ~27k nhóm</td>
-              <td>Onboard cả nhóm; minh bạch & bonus kéo thực hành phi chính thức vào kênh số</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="foot"><div>Bảng Bootstrap · nhìn nhanh KPI & bài học</div><div>So sánh đa chiều</div></div>
-    </div>
-  </section>
-
-  <!-- Slide: Sources -->
-  <section class="slide" id="sources">
-    <div class="frame">
-      <div class="accent"></div>
-      <div class="kicker">Phụ lục</div>
-      <h2 class="title h4">Nguồn tham khảo</h2>
-      <div class="grid">
-        <div class="block">
-          <h6>ALAT / MyPennyTree</h6>
-          <ul class="small">
-            <li>Vanguard — “13,000 people saved N7bn through ALAT Goal — Wema Bank”.</li>
-            <li>YNaija — “How 13,000 people saved over N7bn in one year through ALAT Goals”.</li>
-            <li>Business Insider Africa — Phỏng vấn Chidinma Ndego (Retention +30%, Savings +40%).</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Mapan</h6>
-          <ul class="small">
-            <li>TechCrunch — “Mapan’s services help low-income Indonesian users afford goods and services”.</li>
-            <li>Flourish Ventures — “Why We Invested in Mapan”.</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Tigo Cash “Paaré”</h6>
-          <ul class="small">
-            <li>Millicom Annual Report 2016 — Mobile money Chad; 53k nhóm.</li>
-            <li>GSMA M4D — Case study Tigo Cash Paaré (pilot, tính năng, waitlist 27k).</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h6>Lưu ý</h6>
-          <ul class="small">
-            <li>Số liệu & mốc thời gian được rút gọn cho mục đích trình chiếu.</li>
-            <li>Tham chiếu chi tiết xem báo cáo đầy đủ kèm theo.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="foot"><div>Đen–trắng · Tối giản</div><div>Hết bộ slide</div></div>
-    </div>
-  </section>
-
 </body>
 </html>
