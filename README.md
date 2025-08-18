@@ -39,9 +39,19 @@ git reset --hard HEAD
 
 # v4 – Bootstrap HTML → PPTX (python-pptx)
 
-**What it does**
+**What it does** 
 - Parse Bootstrap-ish HTML (.row / .col-*) into an Intermediate Layout Tree (ILT)
 - Detect elements (cards, KPIs, steps, tables, images, charts, text)
 - Compute a 12-col grid from the actual slide size
 - Render pre-defined pptx elements (presets) and style them with Bootstrap mappings
 - Guard against overflow (shrink-to-fit, word-wrap) and cleanup stray shapes
+
+# v5 – Layout-first Bootstrap HTML → PPTX
+
+This version focuses on **replicating layout only** (rows/cols, offsets, wrapping) using a 12-column grid
+computed from slide size. Content parsing comes later.
+
+## Quick start
+```bash
+pip install -r requirements.txt
+python -m v5.cli.main --html path/to/file.html --out deck.pptx

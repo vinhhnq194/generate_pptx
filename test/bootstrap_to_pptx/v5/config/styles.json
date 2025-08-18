@@ -1,0 +1,6 @@
+{
+  "page":  { "width_in": 13.333, "height_in": 7.5, "margins_in": [0.7, 0.7, 0.7, 0.7], "gutter_in": 0.22 },
+  "bands": { "row_top_in": 1.60, "row_height_in": 1.60 },
+  "debug": { "grid": true, "bbox": true },
+  "tokens": { "rem": 16, "spacing_scale": { "0": 0, "1": 0.25, "2": 0.5, "3": 1, "4": 1.5, "5": 3 } }
+}
