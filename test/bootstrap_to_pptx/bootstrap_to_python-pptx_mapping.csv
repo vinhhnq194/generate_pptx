@@ -1,0 +1,62 @@
+no.,category,bootstrap syntax / concept,python-pptx syntax / concept,storable in model
+52,Background,"bg-body, bg-transparent",slide.background.fill; or shape.fill.background(),Yes
+56,Charts,"Chart libs (e.g., <canvas>, <svg>)","slide.shapes.add_chart(ChartType.COLUMN_CLUSTERED, …); feed data",Yes
+11,Color,text-primary / secondary / success / danger …,"run.font.color.rgb = RGBColor(r,g,b)  # map Bootstrap theme palette to fixed RGB",Yes
+12,Color,bg-primary / bg-light / bg-dark …,shape.fill.solid(); shape.fill.fore_color.rgb = RGBColor(...),Yes
+13,Color,opacity via rgba()/utilities (alpha),shape.fill.fore_color.transparency = 0.3  # 30% transparent,Yes
+14,Color,gradient backgrounds (custom CSS),Not supported by python-pptx gradient API,No
+43,Components,.btn .btn-primary / .btn-outline-*,Rounded rectangle shape with fill/border; text centered,Yes
+44,Components,.badge .bg-* .text-*,AutoShape small rounded rect; font.size small; padding via text_frame margins,Yes
+45,Components,.alert .alert-*,Full-width colored band (rect) + icon/text; color from palette,Yes
+46,Components,".card (header/body/footer, shadow)",Group of rect + textboxes; emulate sections by stacking shapes,Yes
+47,Components,.list-group .list-group-item,Vertical stack of textboxes; optional separators (lines),Yes
+48,Components,.navbar / tabs / pills,Not interactive; render as static header strip with selected tab style,Partial (visual only)
+34,Decor,border / border-top / border-0 …,shape.line.color.rgb; shape.line.width; no per-side borders on shapes,Partial
+35,Decor,rounded / rounded-1…3 / rounded-circle,Use AutoShapeType.ROUNDED_RECTANGLE; adjust .adjustments[0]; circle via OVAL,Yes
+36,Decor,shadow,shape.shadow.visible = True (limited control),Yes
+25,Flex,d-flex,No flex; implement via manual frame layout function,Yes (as layout engine)
+26,Flex,justify-content-start/center/end/between/around,Compute x positions across a row region accordingly,Yes
+27,Flex,align-items-start/center/end,Use vertical positions or text_frame.vertical_anchor,Yes
+28,Flex,"flex-fill, flex-grow-1",Distribute remaining width to shapes by weights,Yes
+29,Flex,flex-column / flex-row,Stack shapes by y or by x in computed order,Yes
+60,Fonts,web fonts (Google Fonts),run.font.name = 'YourFont' (must be installed on OS),Yes
+18,Grid/Layout,.container / .container-fluid,Define slide safe area (Inches) to layout shapes within,Yes
+19,Grid/Layout,.row,A horizontal band; y anchored region where columns are placed,Yes
+20,Grid/Layout,".col, .col-1…12",Divide available width into 12; set each shape width accordingly,Yes
+21,Grid/Layout,"offset-*, order-*",Translate to x-offset and placement order in shape creation,Yes
+22,Grid/Layout,g-0…g-5 (gutters),Inter-column spacing in computed x positions,Yes
+23,Grid/Layout,responsive breakpoints (sm/md/lg/xl/xxl),Not applicable—PowerPoint has fixed canvas; choose a single layout,No (can emulate via variants)
+24,Grid/Layout,d-none / d-block (visibility),Skip creating the shape vs. create shape,Yes
+49,Icons,"Bootstrap Icons <i class=""bi bi-*""></i>",Insert SVG (convert to EMF) or PNG at runtime; no icon font,Yes (asset pipeline)
+57,Interaction,"<a> links, collapse/accordion, modal",Static only; hyperlinks supported via run.hyperlink.address; no runtime UI,Partial (links yes; UI no)
+40,Lists,"<ul>/<ol>, list-unstyled, list-inline","paragraph.level, paragraph._pPr.bu* (bullets). Numbering limited in API",Partial (bullets yes; numbering limited)
+37,Media,img-fluid (responsive),"picture = slide.shapes.add_picture(..., width=..., height=...); manual scaling",Yes
+38,Media,object-fit (cover/contain),Manual: compute crop to fit placeholder box,Yes (as import rule)
+39,Media,<figure> + <figcaption>,Group: picture + textbox below; no native group API (workaround XML),Partial
+30,Position,position-static/relative/absolute/fixed,Only absolute positioning exists (left/top); layering via z-order,Yes (absolute only)
+31,Position,top-0/bottom-0/start-0/end-0,Set left/top to bounding region edges,Yes
+32,Position,z-index (stacking),Limited: shape.z_order_position (read-only); re-order via XML operations,Partial
+33,Position,sticky/fixed (scroll behaviors),Not applicable (no scrolling canvas),No
+15,Spacing,"m-0…m-5, mt-*, mb-*, ms-*, me-* (margin utilities)",Position shapes explicitly: shape.left/top = Inches(...); no margin on shapes,Partial (as layout rules)
+16,Spacing,"p-0…p-5, pt-*, pb-*, ps-*, pe-* (padding utilities)",text_frame.margin_left/right/top/bottom = Pt(...); table cell margins too,Yes
+17,Spacing,gap-0…gap-5 (grid/flex gap),Manual: compute spacing between shapes (left/width math),Yes (layout engine rule)
+41,Tables,".table, .table-striped, .table-hover, .table-bordered","table = slide.shapes.add_table(...); cell.fill, cell.border, alternate row styling via loop",Yes
+42,Tables,table-responsive (scroll),Not applicable; fit table or split across slides,No
+50,Text Frame,align-middle (vertical alignment in table/cell),text_frame.vertical_anchor = MSO_ANCHOR.MIDDLE,Yes
+51,Text Frame,text-break (word-break),tf.word_wrap = True; manual hyphenation if needed,Yes
+59,Text Layout,multi-column text (CSS columns),Duplicate textbox columns manually; no multi-column property,Partial
+1,Typography,fs-1 … fs-6 (font-size utilities); h1…h6; .lead,"run.font.size = Pt(32)  # example; map headings to Pt sizes
+# e.g., h1≈Pt(44), h2≈Pt(36), fs-1≈Pt(40)…",Yes
+2,Typography,fw-bold / fw-semibold / fw-normal / fw-light,run.font.bold = True / None; no 'semibold'—approx via bold/regular only,Partial (no semibold)
+3,Typography,fst-italic,run.font.italic = True,Yes
+4,Typography,lh-1 / lh-sm / lh-base / lh-lg (line-height),"paragraph.line_spacing, paragraph.line_spacing_rule",Partial (different semantics)
+5,Typography,text-start / text-center / text-end,paragraph.alignment = PP_ALIGN.LEFT/CENTER/RIGHT,Yes
+6,Typography,text-wrap / text-nowrap,tf.word_wrap = True/False  # tf = shape.text_frame,Yes
+7,Typography,text-lowercase / text-uppercase / text-capitalize,Transform at import time (Python str methods); no native run property,Yes (as import rule)
+8,Typography,letter-spacing (not a Bootstrap utility by default),Not supported (no tracking property in python-pptx),No
+9,Typography,"text-decoration (underline, none)",run.font.underline = True/False,Yes
+10,Typography,small,run.font.size = Pt(smaller_value),Yes
+53,Utility,"ratio (16x9, 4x3)","prs.slide_width/height set to Inches(13.333, 7.5) for 16:9",Yes
+54,Utility,clearfix,Not applicable,No
+55,Utility,visually-hidden (for a11y),Skip shape creation; no accessibility layer in PPTX via python-pptx,Yes (rule)
+58,Vector,<svg> inline,No native SVG import; convert to EMF/PNG before insert,Yes (asset pipeline)
