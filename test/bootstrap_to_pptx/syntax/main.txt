@@ -10,4 +10,4 @@ python -m v5.main --html v5/tests/fixtures/offsets.html --out v5/demo_v54.pptx
 python -m v5.main --html v5\tests\full\test.html --out v5/demo_v55.pptx
 
 python -m v6.main --html v6/tests/fixtures/simple_2col.html --out v6/demo_v6.pptx
-python -m v6.main --html v6/tests/full/test.html --out v6/demo_v66.pptx
+python -m v6.main --html v6/tests/full/test.html --out v6/demo_v667.pptx
