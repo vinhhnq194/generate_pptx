@@ -23,7 +23,8 @@ def render_layout_only(html_path: str, styles_path: str, template_path: str | No
 
     for i, (rect, col) in enumerate(placements, 1):
         label = f"col:{col.span} off:{col.offset}"
-        add_placeholder(slide, rect.left, rect.top, rect.width, rect.height, label=label)
+        name  = f"Col_span{col.span}_off{col.offset}"
+        add_placeholder(slide, rect.left, rect.top, rect.width, rect.height, label=label, name=name)
         if ST.get("debug", {}).get("bbox", False):
             draw_bbox(slide, rect)
 
